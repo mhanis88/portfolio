@@ -1,4 +1,5 @@
 import GlassCard from './GlassCard';
+import MobileCarousel from './MobileCarousel';
 import SectionHeading from './SectionHeading';
 import { PortfolioBg } from './SectionBg';
 import { projects } from '../data/content';
@@ -17,7 +18,7 @@ export default function Portfolio() {
           subtitle="A selection of projects and systems I've built."
         />
 
-        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 md:grid-cols-3">
+        <MobileCarousel gridClassName="grid-cols-2 gap-4 md:grid-cols-3">
           {projects.map((project, i) => (
             <GlassCard
               key={project.title}
@@ -48,7 +49,7 @@ export default function Portfolio() {
               </div>
             </GlassCard>
           ))}
-        </div>
+        </MobileCarousel>
       </div>
     </section>
   );

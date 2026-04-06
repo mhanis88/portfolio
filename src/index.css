@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Hide scrollbar for carousel */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
 /* ── Theme Variables ── */
 :root {
   --color-bg: #f8fafc;
