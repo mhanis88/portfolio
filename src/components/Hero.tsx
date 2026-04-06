@@ -110,6 +110,31 @@ export default function Hero() {
             {aboutContent.bio}
           </p>
 
+          {/* Quote */}
+          <div className="mt-5 max-w-xl">
+            <div className="relative min-h-[4rem] rounded-lg border border-white/10 bg-white/5 px-5 py-3 backdrop-blur-sm">
+              <span className="absolute -top-3 left-3 text-3xl leading-none text-blue-400/60">
+                &ldquo;
+              </span>
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={quoteIndex}
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -8 }}
+                  transition={{ duration: 0.4 }}
+                >
+                  <p className="text-sm italic leading-relaxed text-slate-300">
+                    {aboutContent.quotes[quoteIndex].text}
+                  </p>
+                  <p className="mt-1 text-xs text-slate-500">
+                    — {aboutContent.quotes[quoteIndex].author}
+                  </p>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+          </div>
+
           {/* Social icons + CTAs */}
           <div className="mt-8 flex flex-wrap items-center justify-center gap-4 md:justify-start">
             {/* Social icons */}
