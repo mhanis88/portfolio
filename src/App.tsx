@@ -6,6 +6,7 @@ import Experience from './components/Experience';
 import Portfolio from './components/Portfolio';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import ScrollToTop from './components/ScrollToTop';
 import ParallaxSection from './components/ParallaxSection';
 import { useTheme } from './hooks/useTheme';
 
@@ -36,6 +37,7 @@ export default function App() {
       <div className="relative" style={{ zIndex: 7 }}>
         <Footer />
       </div>
+      <ScrollToTop />
     </div>
   );
 }
