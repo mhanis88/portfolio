@@ -43,7 +43,7 @@ export default function GlassCard({
       }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className={`glass glass-hover rounded-2xl p-6 ${className}`}
+      className={`glass glass-hover rounded-2xl p-4 sm:p-6 ${className}`}
     >
       {children}
     </motion.div>
