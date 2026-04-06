@@ -62,7 +62,7 @@ export default function Hero() {
       {/* Content — Profile card layout */}
       <motion.div
         style={{ y: contentY, opacity }}
-        className="relative z-10 mx-auto flex w-full max-w-5xl flex-col items-center gap-10 px-6 md:flex-row md:items-start md:gap-14 lg:gap-20"
+        className="relative z-10 mx-auto flex w-full max-w-5xl flex-col items-center gap-6 px-5 pt-20 sm:gap-8 sm:px-6 sm:pt-0 md:flex-row md:items-start md:gap-14 lg:gap-20"
       >
         {/* Left — Avatar */}
         <motion.div
@@ -71,7 +71,7 @@ export default function Hero() {
           transition={{ duration: 0.7, delay: 0.2 }}
           className="shrink-0"
         >
-          <div className="relative h-56 w-56 overflow-hidden rounded-2xl shadow-2xl ring-2 ring-white/10 sm:h-64 sm:w-64 md:h-72 md:w-72 lg:h-80 lg:w-80">
+          <div className="relative h-36 w-36 overflow-hidden rounded-2xl shadow-2xl ring-2 ring-white/10 sm:h-52 sm:w-52 md:h-72 md:w-72 lg:h-80 lg:w-80">
             <img
               src={`${import.meta.env.BASE_URL}image/profile.jpg`}
               alt={siteConfig.name}
@@ -87,33 +87,33 @@ export default function Hero() {
           transition={{ duration: 0.7, delay: 0.3 }}
           className="flex flex-col text-center md:text-left"
         >
-          {/* Name */}
-          <h1 className="font-display text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl">
+          {/* Greeting */}
+          <h1 className="font-display text-3xl font-extrabold tracking-tight text-white sm:text-4xl lg:text-6xl">
             {siteConfig.name.split(' ').slice(0, 2).join(' ')}{' '}
             <span className="bg-gradient-to-r from-blue-400 to-teal-400 bg-clip-text text-transparent">
               {siteConfig.name.split(' ').slice(2).join(' ')}
             </span>
           </h1>
 
-          {/* Greeting */}
-          <h2 className="mt-6 text-3xl font-bold text-white sm:text-3xl lg:text-4xl">
+          {/* Name */}
+          <h2 className="mt-3 text-xl font-bold text-white sm:mt-4 sm:text-2xl lg:text-4xl">
             Mohd Hanis Bin Mohd Tajudin
           </h2>
 
           {/* Role */}
-          <p className="mt-3 text-lg font-semibold text-blue-300 sm:text-xl">
+          <p className="mt-1.5 text-sm font-semibold text-blue-300 sm:mt-2 sm:text-lg">
             {siteConfig.role}
           </p>
 
-          {/* Bio */}
-          <p className="mt-4 max-w-xl text-sm leading-relaxed text-slate-300 sm:text-base">
+          {/* Bio — truncated on mobile */}
+          <p className="mt-3 line-clamp-3 max-w-xl text-xs leading-relaxed text-slate-300 sm:mt-4 sm:line-clamp-none sm:text-base">
             {aboutContent.bio}
           </p>
 
           {/* Quote */}
-          <div className="mt-5 max-w-xl">
-            <div className="relative min-h-[4rem] rounded-lg border border-white/10 bg-white/5 px-5 py-3 backdrop-blur-sm">
-              <span className="absolute -top-3 left-3 text-3xl leading-none text-blue-400/60">
+          <div className="mt-3 max-w-xl sm:mt-5">
+            <div className="relative min-h-[3.5rem] rounded-lg border border-white/10 bg-white/5 px-4 py-2.5 backdrop-blur-sm sm:px-5 sm:py-3">
+              <span className="absolute -top-3 left-3 text-2xl leading-none text-blue-400/60 sm:text-3xl">
                 &ldquo;
               </span>
               <AnimatePresence mode="wait">
@@ -124,10 +124,10 @@ export default function Hero() {
                   exit={{ opacity: 0, y: -8 }}
                   transition={{ duration: 0.4 }}
                 >
-                  <p className="text-sm italic leading-relaxed text-slate-300">
+                  <p className="text-xs italic leading-relaxed text-slate-300 sm:text-sm">
                     {aboutContent.quotes[quoteIndex].text}
                   </p>
-                  <p className="mt-1 text-xs text-slate-500">
+                  <p className="mt-1 text-[10px] text-slate-500 sm:text-xs">
                     — {aboutContent.quotes[quoteIndex].author}
                   </p>
                 </motion.div>
@@ -135,8 +135,26 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Social icons + CTAs */}
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-4 md:justify-start">
+          {/* CTAs + Social */}
+          <div className="mt-5 flex flex-col items-center gap-3 sm:mt-8 md:items-start">
+            {/* CTA Buttons — full width on mobile */}
+            <div className="flex w-full flex-col gap-2.5 sm:w-auto sm:flex-row sm:gap-4">
+              <button
+                onClick={() => scrollTo('#portfolio')}
+                className="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-blue-600 to-teal-500 px-6 py-2.5 text-sm font-semibold text-white shadow-lg shadow-blue-600/30 transition-all duration-300 hover:shadow-xl hover:shadow-blue-600/40 hover:brightness-110 sm:py-3"
+              >
+                {heroContent.cta1}
+                <FiArrowRight className="h-4 w-4" />
+              </button>
+              <button
+                onClick={() => scrollTo('#contact')}
+                className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/20 bg-white/10 px-6 py-2.5 text-sm font-semibold text-white backdrop-blur-sm transition-all duration-300 hover:bg-white/20 sm:py-3"
+              >
+                <FiMail className="h-4 w-4" />
+                {heroContent.cta2}
+              </button>
+            </div>
+
             {/* Social icons */}
             <div className="flex items-center gap-3">
               <a
@@ -144,36 +162,20 @@ export default function Hero() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn"
-                className="flex h-10 w-10 items-center justify-center rounded-lg border border-white/15 bg-white/10 text-white/80 backdrop-blur-sm transition-colors hover:bg-white/20 hover:text-white"
+                className="flex h-9 w-9 items-center justify-center rounded-lg border border-white/15 bg-white/10 text-white/80 backdrop-blur-sm transition-colors hover:bg-white/20 hover:text-white sm:h-10 sm:w-10"
               >
-                <FiLinkedin className="h-5 w-5" />
+                <FiLinkedin className="h-4 w-4 sm:h-5 sm:w-5" />
               </a>
               <a
                 href={siteConfig.github}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="GitHub"
-                className="flex h-10 w-10 items-center justify-center rounded-lg border border-white/15 bg-white/10 text-white/80 backdrop-blur-sm transition-colors hover:bg-white/20 hover:text-white"
+                className="flex h-9 w-9 items-center justify-center rounded-lg border border-white/15 bg-white/10 text-white/80 backdrop-blur-sm transition-colors hover:bg-white/20 hover:text-white sm:h-10 sm:w-10"
               >
-                <FiGithub className="h-5 w-5" />
+                <FiGithub className="h-4 w-4 sm:h-5 sm:w-5" />
               </a>
             </div>
-
-            {/* CTA Buttons */}
-            <button
-              onClick={() => scrollTo('#portfolio')}
-              className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-blue-600 to-teal-500 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-blue-600/30 transition-all duration-300 hover:shadow-xl hover:shadow-blue-600/40 hover:brightness-110"
-            >
-              {heroContent.cta1}
-              <FiArrowRight className="h-4 w-4" />
-            </button>
-            <button
-              onClick={() => scrollTo('#contact')}
-              className="inline-flex items-center gap-2 rounded-xl border border-white/20 bg-white/10 px-6 py-3 text-sm font-semibold text-white backdrop-blur-sm transition-all duration-300 hover:bg-white/20"
-            >
-              <FiMail className="h-4 w-4" />
-              {heroContent.cta2}
-            </button>
           </div>
         </motion.div>
       </motion.div>
