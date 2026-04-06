@@ -40,7 +40,7 @@ export default function Hero() {
         style={{ scale: bgScale }}
       >
         <motion.img
-          src="/image/hero-bg.jpg"
+          src={`${import.meta.env.BASE_URL}image/hero-bg.jpg`}
           alt=""
           className="h-full w-full object-cover opacity-40 dark:opacity-30"
           style={{ filter: useTransform(bgBlur, (v) => `blur(${v}px)`) }}
@@ -73,7 +73,7 @@ export default function Hero() {
         >
           <div className="relative h-56 w-56 overflow-hidden rounded-2xl shadow-2xl ring-2 ring-white/10 sm:h-64 sm:w-64 md:h-72 md:w-72 lg:h-80 lg:w-80">
             <img
-              src="/image/profile.jpg"
+              src={`${import.meta.env.BASE_URL}image/profile.jpg`}
               alt={siteConfig.name}
               className="h-full w-full object-cover object-top"
             />
