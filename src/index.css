@@ -1,0 +1,181 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Theme Variables ── */
+:root {
+  --color-bg: #f8fafc;
+  --color-bg-radial: #f1f5f9;
+  --grad-bg-1: #f1f5f9;
+  --grad-bg-2: #e8f0fe;
+  --grad-bg-3: #ecfdf5;
+  --grad-bg-4: #eef2ff;
+  --scrollbar-track: #f1f5f9;
+  --scrollbar-thumb: rgba(56, 114, 178, 0.25);
+  --scrollbar-thumb-hover: rgba(56, 114, 178, 0.4);
+  --glass-bg: rgba(255, 255, 255, 0.72);
+  --glass-border: rgba(0, 0, 0, 0.1);
+  --glass-hover-bg: rgba(255, 255, 255, 0.88);
+  --glass-hover-border: rgba(0, 0, 0, 0.14);
+  --glass-hover-shadow: rgba(30, 64, 120, 0.12);
+  --grad-text-from: #0f172a;
+  --grad-text-via: #1e40af;
+  --grad-text-to: #0f766e;
+  --grad-border-from: rgba(30, 64, 175, 0.25);
+  --grad-border-via: rgba(37, 99, 235, 0.25);
+  --grad-border-to: rgba(13, 148, 136, 0.2);
+  --orb-opacity: 0.12;
+  --hero-headline: #0f172a;
+  --hero-label: #1d4ed8;
+  --hero-sub: #334155;
+  --hero-btn2-text: #0f172a;
+  --hero-btn2-bg: rgba(255, 255, 255, 0.8);
+  --hero-btn2-border: rgba(0, 0, 0, 0.15);
+  --hero-btn2-shadow: rgba(0, 0, 0, 0.08);
+  --hero-avatar-bg: #e2e8f0;
+  --hero-avatar-skin: #fbbf68;
+  --hero-avatar-shirt: #2563eb;
+  --hero-avatar-glasses: #334155;
+}
+
+.dark {
+  --color-bg: #060c1d;
+  --color-bg-radial: #060c1d;
+  --grad-bg-1: #060c1d;
+  --grad-bg-2: #0a1628;
+  --grad-bg-3: #0c1e3a;
+  --grad-bg-4: #091a2e;
+  --scrollbar-track: #060c1d;
+  --scrollbar-thumb: rgba(56, 114, 178, 0.4);
+  --scrollbar-thumb-hover: rgba(56, 114, 178, 0.6);
+  --glass-bg: rgba(255, 255, 255, 0.04);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-hover-bg: rgba(255, 255, 255, 0.08);
+  --glass-hover-border: rgba(255, 255, 255, 0.15);
+  --glass-hover-shadow: rgba(30, 64, 120, 0.15);
+  --grad-text-from: #94a3b8;
+  --grad-text-via: #3b82f6;
+  --grad-text-to: #2dd4bf;
+  --grad-border-from: rgba(148, 163, 184, 0.3);
+  --grad-border-via: rgba(59, 130, 246, 0.3);
+  --grad-border-to: rgba(45, 212, 191, 0.2);
+  --orb-opacity: 0.20;
+  --hero-headline: #ffffff;
+  --hero-label: rgba(96, 165, 250, 0.8);
+  --hero-sub: #94a3b8;
+  --hero-btn2-text: #ffffff;
+  --hero-btn2-bg: rgba(255, 255, 255, 0.06);
+  --hero-btn2-border: rgba(255, 255, 255, 0.12);
+  --hero-btn2-shadow: transparent;
+  --hero-avatar-bg: #1e293b;
+  --hero-avatar-skin: #fbbf68;
+  --hero-avatar-shirt: #3b82f6;
+  --hero-avatar-glasses: #94a3b8;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--color-bg);
+  color: #1e293b;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.3s ease;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover);
+}
+
+/* Glass utilities */
+@layer components {
+  .glass {
+    background: var(--glass-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--glass-border);
+    transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .glass-hover {
+    transition: all 0.3s ease;
+  }
+
+  .glass-hover:hover {
+    background: var(--glass-hover-bg);
+    border-color: var(--glass-hover-border);
+    box-shadow: 0 8px 32px var(--glass-hover-shadow);
+  }
+
+  .gradient-text {
+    background: linear-gradient(135deg, var(--grad-text-from), var(--grad-text-via), var(--grad-text-to));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .gradient-border {
+    position: relative;
+  }
+
+  .gradient-border::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg, var(--grad-border-from), var(--grad-border-via), var(--grad-border-to));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+}
+
+/* Animated gradient background */
+.animated-gradient-bg {
+  background: linear-gradient(-45deg, var(--grad-bg-1), var(--grad-bg-2), var(--grad-bg-3), var(--grad-bg-4));
+  background-size: 400% 400%;
+  animation: gradient-shift 15s ease infinite;
+  transition: background 0.3s ease;
+}
+
+@keyframes gradient-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* Section spacing */
+section {
+  position: relative;
+}
